@@ -122,9 +122,9 @@ public class CoolWeatherDB {
 	public void saveCounty(County county){
 		if(county != null){
 			ContentValues values = new ContentValues();
-			values.put("county_name", county.getCityName());
-			values.put("county_code", county.getCityCode());
-			values.put("city_id",county.getProvinceId());
+			values.put("county_name", county.getCountyName());
+			values.put("county_code", county.getCountyCode());
+			values.put("city_id",county.getCityId());
 			db.insert("county", null, values);
 		}
 	}
