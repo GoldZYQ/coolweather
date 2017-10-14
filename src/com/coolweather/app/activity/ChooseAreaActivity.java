@@ -92,7 +92,7 @@ public class ChooseAreaActivity extends Activity {
 	 *查询全国所有的省，有限从数据库查询，如果没有查询到再去服务器上查询.
 	 */
 	private void queryProvinces(){
-		provinceList = coolWeatherDB.LoadProvinces();
+		provinceList = coolWeatherDB.loadProvinces();
 		if(provinceList.size()>0){
 			dataList.clear();
 			for (Province province : provinceList){

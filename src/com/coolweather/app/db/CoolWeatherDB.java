@@ -62,13 +62,13 @@ public class CoolWeatherDB {
 	/**
 	 * 从数据库读取全国所有的省份信息
 	 */
-	public List<Province> LoadProvinces(){
+	public List<Province> loadProvinces(){
 		List<Province> list = new ArrayList<Province>();
 		Cursor cursor = db.query("Province", null, null, null, null, null, null);
 		if (cursor.moveToFirst()){
 			do{
 				Province province = new Province();
-				province.setId(cursor.getInt(cursor.getColumnIndex("Id")));
+				province.setId(cursor.getInt(cursor.getColumnIndex("id")));
 				province.setProvinceName(cursor.getString(cursor.getColumnIndex("province_name")));
 				province.setProvinceCode(cursor.getString(cursor.getColumnIndex("province_code")));
 				list.add(province);
@@ -134,7 +134,7 @@ public class CoolWeatherDB {
 	 */
 	public List<County> loadcounties(int cityId){
 		List<County> list = new ArrayList<County>();
-		Cursor cursor = db.query("County", null, "cityid = ?", new String[]{String.valueOf(cityId)}, null, null, null);
+		Cursor cursor = db.query("County", null, "city_id = ?", new String[]{String.valueOf(cityId)}, null, null, null);
 		if(cursor.moveToFirst()){
 			do{
 				County county = new County();

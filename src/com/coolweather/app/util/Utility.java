@@ -24,7 +24,7 @@ public class Utility {
 					//将解析出来的数据存储到Province表
 					coolWeatherDB.saveProvince(province);
 				}
-				return false;
+				return true;
 			}
 		}
 		return false;
@@ -52,7 +52,7 @@ public class Utility {
 		return false;
 	}
 	
-	/**
+	/** 
 	 * 解析和处理服务器返回的县级数据
 	 */
 	public synchronized static boolean handleCountiesResponse(CoolWeatherDB coolWeatherDB,String response, int cityId){
