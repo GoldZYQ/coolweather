@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
@@ -81,7 +82,7 @@ public class WeatherActivity extends Activity {
 	 * 查询天气代号所对应的天气
 	 */
 	private void queryWeatherInfo(String weatherCode){
-		String address = "http://www.weather.com.cn/data/cityinfo"+weatherCode+".html";
+		String address = "http://www.weather.com.cn/data/cityinfo/"+weatherCode+".html";
 		queryFromServer(address, "weatherCode");
 	}
 	
@@ -90,8 +91,11 @@ public class WeatherActivity extends Activity {
 	 */
 	private void queryFromServer (final String address, final String type){
 		HttpUtil.sendHttpRequest(address, new HttpCallbackListener(){
+		
 			@Override
+			
 			public void onFinish(final String response){
+			
 				if("countyCode".equals(type)){
 					if (!TextUtils.isEmpty(response)){
 						//从服务器返回的数据中解析出天气代号
@@ -99,6 +103,7 @@ public class WeatherActivity extends Activity {
 						if(array != null && array.length == 2){
 							String weatherCode = array[1];
 							queryWeatherInfo(weatherCode);
+						
 						}
 					}
 				}else if ("weatherCode".equals(type)){
@@ -108,6 +113,7 @@ public class WeatherActivity extends Activity {
 						@Override
 						public void run(){
 							showWeather();
+							
 						}
 					});
 						
@@ -140,5 +146,6 @@ public class WeatherActivity extends Activity {
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		
 	}
 }

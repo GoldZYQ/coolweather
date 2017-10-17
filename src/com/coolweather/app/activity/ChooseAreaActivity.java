@@ -20,6 +20,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -225,6 +226,7 @@ public class ChooseAreaActivity extends Activity {
 			progressDialog.setCanceledOnTouchOutside(false);
 		}
 		progressDialog.show();
+		
 	}
 	
 	/**

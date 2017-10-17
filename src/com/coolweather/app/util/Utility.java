@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.coolweather.app.db.CoolWeatherDB;
 import com.coolweather.app.model.City;
@@ -78,6 +79,9 @@ public class Utility {
 					county.setCityId(cityId);
 					//将解析出来的数据存储到County表
 					coolWeatherDB.saveCounty(county);
+					
+			
+					
 				}
 				return true;
 			}
@@ -88,8 +92,10 @@ public class Utility {
 	 *解析服务器返回的JSON数据，并将解析出的数据存储到本地
 	 */
 	public static void handleWeatherResponse(Context context,String response){
+	
 		try{
 			JSONObject jsonObject = new JSONObject(response);
+
 			JSONObject weatherInfo = jsonObject.getJSONObject("weatherinfo");
 			String cityName = weatherInfo.getString("city");
 			String weatherCode = weatherInfo.getString("cityid");
@@ -97,8 +103,13 @@ public class Utility {
 			String temp2 = weatherInfo.getString("temp2");
 			String weatherDesp = weatherInfo.getString("weather");
 			String publishTime = weatherInfo.getString("ptime");
+			
+		
+			
+			
 			saveWeatherInfo(context, cityName, weatherCode, temp1, temp2,weatherDesp, publishTime);
 		} catch (JSONException e){
+	
 			e.printStackTrace();
 		}
 	}
@@ -118,5 +129,6 @@ public class Utility {
 		editor.putString("publish_time", publishTime);
 		editor.putString("current_date", sdf.format(new Date()));
 		editor.commit();
+		
 	}
 }
