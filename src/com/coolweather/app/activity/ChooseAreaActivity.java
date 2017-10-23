@@ -76,6 +76,7 @@ public class ChooseAreaActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
+		AdManager.getInstance(this).init("52381386af2d01b1","0b81935151b57eb9",false);
 		isFromWeatherActivity = getIntent().getBooleanExtra("from_weather_activity", false);
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 		//已经选择了城市且不是从WeatherActivity跳转过来，才会直接跳转到WeatherActivity
